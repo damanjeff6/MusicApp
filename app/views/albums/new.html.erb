@@ -1,0 +1,23 @@
+<h1>Create a New Album</h1>
+<% unless flash[:errors].nil? %>
+	<% flash.now[:errors].each do |error| %>
+		<h3><%= error %></h3>
+	<% end %>
+<% end %>
+
+<form action="/bands" method="POST">
+  <input type="hidden"
+         name="authenticity_token"
+         value="<%= form_authenticity_token %>">
+
+	<label for="band_options">Select a Band:</label>
+	<br>
+	<select name="album[band_id]" id="band_options">
+    <% @bands.each do |band|%>
+      <option value= <%=band[:id]%>> <%=band[:name]%> <%= "selected" if band[:id].to_s == params[:band_id].to_s%></option>
+    <% end %>
+  </select>
+	<br>
+
+	<input type="submit">
+</form>
