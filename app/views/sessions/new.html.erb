@@ -1,0 +1,22 @@
+<% unless flash[:errors].nil? %>
+	<% flash.now[:errors].each do |error| %>
+		<h3><%= error %></h3>
+	<% end %>
+<% end %>
+
+<form action="/session" method="POST">
+  <input type="hidden"
+         name="authenticity_token"
+         value="<%= form_authenticity_token %>">
+
+	<label for="email">Email/Username:</label>
+	<br>
+	<input type="text" id="email" name="user[email]">
+	<br>
+	<label for="user_password">Password:</label>
+	<br>
+	<input type="password" id="user_password" name="user[password]">
+	<br>
+
+	<input type="submit">
+</form>

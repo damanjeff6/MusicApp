@@ -13,7 +13,6 @@ class SessionsController < ApplicationController
       render :new
     else
       log_in_user!(@user)
-      render json: => @user
     end
   end
 
